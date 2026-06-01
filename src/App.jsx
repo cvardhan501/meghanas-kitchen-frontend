@@ -3,8 +3,8 @@ import { useState, useEffect, useRef, useCallback } from "react";
 // ─── CONFIG — change this to your deployed backend URL ─────────────────────
 // const API = "https://meghanas-kitchen-backend.up.railway.app";
 // During local dev use:
-const API = "http://localhost:5000"; // for local development
-// const API = "https://meghanas-kitchen-backend.onrender.com"; //render
+//const API = "http://localhost:5000"; // for local development
+const API = "https://meghanas-kitchen-backend.onrender.com"; //render
 
 const TABLES = [1, 2, 3, 4, 5, 6, 7, 8];
 const RESTAURANT = "Meghana's Kitchen";
