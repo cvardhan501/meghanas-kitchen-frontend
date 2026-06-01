@@ -1,0 +1,22 @@
+{
+  "name": "Meghana's Kitchen",
+  "short_name": "Meghana's Kitchen",
+  "description": "QR table ordering system for Meghana's Kitchen.",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#062C1B",
+  "theme_color": "#062C1B",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

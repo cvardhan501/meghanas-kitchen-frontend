@@ -3,8 +3,8 @@ import { useState, useEffect, useRef, useCallback } from "react";
 // ─── CONFIG — change this to your deployed backend URL ─────────────────────
 // const API = "https://meghanas-kitchen-backend.up.railway.app";
 // During local dev use:
-// const API = "http://localhost:5000"; // for local development
-const API = "https://meghanas-kitchen-backend.onrender.com"; //render
+const API = "http://localhost:5000"; // for local development
+// const API = "https://meghanas-kitchen-backend.onrender.com"; //render
 
 const TABLES = [1, 2, 3, 4, 5, 6, 7, 8];
 const RESTAURANT = "Meghana's Kitchen";
@@ -225,15 +225,23 @@ html, body {
 .nav {
   background: var(--forest);
   border-bottom: 1px solid var(--forest-light);
-  padding: 0 24px;
+  padding: 12px 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 60px;
+  flex-wrap: wrap;
+  gap: 10px;
   position: sticky;
   top: 0;
   z-index: 100;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  justify-content: flex-end;
 }
 .brand-text h1 {
   font-family: 'Playfair Display', serif;
@@ -249,9 +257,14 @@ html, body {
   text-transform: uppercase;
   font-weight: 600;
 }
-.nav-tabs { display: flex; gap: 6px; }
+.nav-tabs {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
 .nav-tab {
-  padding: 8px 16px;
+  padding: 8px 12px;
   border-radius: 8px;
   font-size: 13px;
   font-weight: 600;
@@ -260,6 +273,63 @@ html, body {
   background: transparent;
   color: rgba(255, 255, 255, 0.6);
   transition: all 0.25s ease;
+}
+.nav-menu-btn {
+  display: none;
+}
+.nav-more {
+  display: none;
+  width: 100%;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+}
+.nav-more.open {
+  display: flex;
+}
+.nav-more-item {
+  width: 100%;
+  justify-content: center;
+}
+
+@media (max-width: 720px) {
+  .nav-right {
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 14px 16px;
+  }
+  .brand-text {
+    width: 100%;
+    text-align: center;
+  }
+  .nav-tabs {
+    width: 100%;
+    justify-content: center;
+  }
+  .nav-tab {
+    flex: 1 1 auto;
+    min-width: 110px;
+  }
+  .nav-menu-btn {
+    display: inline-flex;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    border: none;
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+  }
+  .nav-menu-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+  }
+  .nav-tab-more {
+    display: none;
+  }
 }
 .nav-tab:hover { color: var(--beige); background: rgba(255, 255, 255, 0.05); }
 .nav-tab.active { background: var(--orange); color: white; box-shadow: 0 4px 12px rgba(214, 124, 25, 0.25); }
@@ -3001,6 +3071,7 @@ export default function App() {
   const [view, setView] = useState("customer");
   const [ownerData, setOwnerData] = useState(null);
   const [chefLogout, setChefLogout] = useState(false);
+  const [showMore, setShowMore] = useState(false);
 
   // Restore owner session
   useEffect(() => {
@@ -3031,28 +3102,63 @@ export default function App() {
               <p>Table Ordering System</p>
             </div>
           </div>
-          <div className="nav-tabs">
+          <div className="nav-right">
+            <div className="nav-tabs">
+              <button
+                className={`nav-tab ${view === "customer" ? "active" : ""}`}
+                onClick={() => {
+                  setView("customer");
+                  setShowMore(false);
+                }}
+              >
+                Menu
+              </button>
+              <button
+                className={`nav-tab ${view === "track" ? "active" : ""}`}
+                onClick={() => {
+                  setView("track");
+                  setShowMore(false);
+                }}
+              >
+                Track
+              </button>
+              <button
+                className={`nav-tab nav-tab-more ${view === "chef" ? "active" : ""}`}
+                onClick={() => setView("chef")}
+              >
+                Chef
+              </button>
+              <button
+                className={`nav-tab nav-tab-more ${view === "owner" ? "active" : ""}`}
+                onClick={() => setView("owner")}
+              >
+                Owner
+              </button>
+            </div>
             <button
-              className={`nav-tab ${view === "customer" ? "active" : ""}`}
-              onClick={() => setView("customer")}
+              className="nav-menu-btn"
+              onClick={() => setShowMore((open) => !open)}
+              aria-label="More options"
             >
-              Menu
+              ☰
             </button>
+          </div>
+          <div className={`nav-more ${showMore ? "open" : ""}`}>
             <button
-              className={`nav-tab ${view === "track" ? "active" : ""}`}
-              onClick={() => setView("track")}
-            >
-              Track
-            </button>
-            <button
-              className={`nav-tab ${view === "chef" ? "active" : ""}`}
-              onClick={() => setView("chef")}
+              className={`nav-tab nav-more-item ${view === "chef" ? "active" : ""}`}
+              onClick={() => {
+                setView("chef");
+                setShowMore(false);
+              }}
             >
               Chef
             </button>
             <button
-              className={`nav-tab ${view === "owner" ? "active" : ""}`}
-              onClick={() => setView("owner")}
+              className={`nav-tab nav-more-item ${view === "owner" ? "active" : ""}`}
+              onClick={() => {
+                setView("owner");
+                setShowMore(false);
+              }}
             >
               Owner
             </button>
