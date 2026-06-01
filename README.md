@@ -1,16 +1,46 @@
-# React + Vite
+🍽️ Meghana’s Kitchen
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack restaurant management and digital ordering platform built using React, Node.js, Express, and MongoDB.
 
-Currently, two official plugins are available:
+🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+* Digital food ordering system
+* Table-based order management
+* Chef Dashboard for kitchen operations
+* Owner Dashboard for billing and monitoring
+* Real-time order tracking
+* Mobile-responsive interface
+* Cloud deployment using Render and Vercel
 
-## React Compiler
+🛠️ Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* Frontend: React.js, Vite, JavaScript, CSS
+* Backend: Node.js, Express.js
+* Database: MongoDB Atlas
+* Deployment: Render, Vercel
+* Version Control: Git & GitHub
 
-## Expanding the ESLint configuration
+🎯 Skills Demonstrated
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* Full Stack Development
+* REST API Development
+* Database Integration
+* Cloud Deployment
+* Responsive Web Design
+* Git & GitHub Workflow
+
+🌐 Live Demo
+
+Frontend:
+https://meghanas-kitchen-frontend.vercel.app
+
+Backend:
+https://meghanas-kitchen-backend.onrender.com
+
+👨‍💻 Author
+
+C Vishnu Vardhan
+
+B.Tech CSE (Artificial Intelligence & Machine Learning)
+
+Amity University Bengaluru 
